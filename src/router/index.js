@@ -8,16 +8,50 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    children: [
+      {
+        path: 'category',
+        name: 'category',
+        component: () => import(/* webpackChunkName: "order" */ '../views/category/CategoryView.vue')
+      },
+      {
+        path: 'category/create',
+        name: 'category-create',
+        component: () => import(/* webpackChunkName: "order-create" */ '../views/category/CategoryCreateView.vue')
+      },
+      {
+        path: 'category/edit/:id',
+        name: 'category-edit',
+        component: () => import(/* webpackChunkName: "order-edit" */ '../views/category/CategoryEditView.vue')
+      },
+      {
+        path: 'recipe',
+        name: 'recipe',
+        component: () => import(/* webpackChunkName: "recipe" */ '../views/recipe/RecipeView.vue')
+      },
+      {
+        path: 'recipe/create',
+        name: 'recipe-create',
+        component: () => import(/* webpackChunkName: "recipe-create" */ '../views/recipe/RecipeCreateView.vue')
+      },
+      {
+        path: 'recipe/edit/:id',
+        name: 'recipe-edit',
+        component: () => import(/* webpackChunkName: "recipe-edit" */ '../views/recipe/RecipeEditView.vue')
+      },
+      {
+        path: 'order/history',
+        name: 'order-history',
+        component: () => import(/* webpackChunkName: "order-history" */ '../views/order/OrderHistoryView.vue')
+      },
+      {
+        path: 'order',
+        name: 'order',
+        component: () => import(/* webpackChunkName: "order" */ '../views/order/OrderView.vue')
+      },
+    ]
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
 ]
 
 const router = new VueRouter({
